@@ -89,11 +89,12 @@ func main() {
 
 	r.GET("/", func(c *gin.Context) {
 		c.JSON(200, gin.H{
-			"Avatar":   "/resource/images/1.jpg",
+			"Avatar":   "/resource/images/3.jpg",
 			"UserName": "不会写代码的建筑师",
 			"UserDesc": "写代码是医生的邀请",
 			"Bilibili": "https://space.bilibili.com/66628849",
 			"zhihu":    "https://www.zhihu.com/people/xu-heng-wei-63",
+			"github":   "https://github.com/user-hw",
 			"code":     200,
 			// "Categorys": [1,2],
 		})

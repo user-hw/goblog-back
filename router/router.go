@@ -16,6 +16,8 @@ func Start() {
 
 	r.GET("/page/userinfo/:name", controller.PageUserInfo)
 
+	r.GET("/post/", controller.Post)
+
 	r.GET("/test", func(c *gin.Context) {
 		c.JSON(200, gin.H{
 			"Avatar":   "/resource/images/3.jpg",

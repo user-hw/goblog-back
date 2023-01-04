@@ -1,0 +1,19 @@
+
+2023/01/03 15:52:36 [31;1m/home/ubuntu/web/goblog-back/dao/dbInit.go:25 [35;1mError 1075 (42000): Incorrect table definition; there can be only one auto column and it must be defined as a key
+[0m[33m[0.785ms] [34;1m[rows:0][0m ALTER TABLE `user_info` MODIFY COLUMN `uid` bigint NOT NULL AUTO_INCREMENT NOT NULL UNIQUE
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /page/category/           --> goblog-end/controller.Category (4 handlers)
+[GIN-debug] GET    /page/userinfo/:name      --> goblog-end/controller.PageUserInfo (4 handlers)
+[GIN-debug] GET    /test                     --> goblog-end/router.Start.func1 (4 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :8082
+dataList: [{{1000 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC {0001-01-01 00:00:00 +0000 UTC false}} 1000 henryk /resource/images/3.jpg   写代码是医生的邀请 https://space.bilibili.com/66628849 https://www.zhihu.com/people/xu-heng-wei-63 https://github.com/user-hw}]
+[GIN] 2023/01/03 - 15:53:22 | 200 |    1.352464ms |   221.227.14.53 | GET      "/page/userinfo/henryk"
+dataList: [{{1000 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC {0001-01-01 00:00:00 +0000 UTC false}} 1000 henryk /resource/images/3.jpg   写代码是医生的邀请 https://space.bilibili.com/66628849 https://www.zhihu.com/people/xu-heng-wei-63 https://github.com/user-hw}]
+[GIN] 2023/01/03 - 15:53:26 | 200 |     974.636µs |   221.227.14.53 | GET      "/page/userinfo/henryk"

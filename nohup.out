@@ -17,3 +17,49 @@ dataList: [{{1000 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC {0
 [GIN] 2023/01/03 - 15:53:22 | 200 |    1.352464ms |   221.227.14.53 | GET      "/page/userinfo/henryk"
 dataList: [{{1000 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC {0001-01-01 00:00:00 +0000 UTC false}} 1000 henryk /resource/images/3.jpg   写代码是医生的邀请 https://space.bilibili.com/66628849 https://www.zhihu.com/people/xu-heng-wei-63 https://github.com/user-hw}]
 [GIN] 2023/01/03 - 15:53:26 | 200 |     974.636µs |   221.227.14.53 | GET      "/page/userinfo/henryk"
+
+2023/01/04 17:27:05 [31;1m/home/ubuntu/web/goblog-back/dao/dbInit.go:25 [35;1mError 1075 (42000): Incorrect table definition; there can be only one auto column and it must be defined as a key
+[0m[33m[5.322ms] [34;1m[rows:0][0m ALTER TABLE `user_info` MODIFY COLUMN `uid` bigint NOT NULL AUTO_INCREMENT NOT NULL UNIQUE
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /page/category/           --> goblog-end/controller.Category (4 handlers)
+[GIN-debug] GET    /page/userinfo/:name      --> goblog-end/controller.PageUserInfo (4 handlers)
+[GIN-debug] GET    /post/                    --> goblog-end/controller.Post (4 handlers)
+[GIN-debug] GET    /test                     --> goblog-end/router.Start.func1 (4 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :8082
+dataList: [{{1000 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC {0001-01-01 00:00:00 +0000 UTC false}} 1000 henryk /resource/images/3.jpg   写代码是医生的邀请 https://space.bilibili.com/66628849 https://www.zhihu.com/people/xu-heng-wei-63 https://github.com/user-hw}]
+[GIN] 2023/01/04 - 17:27:07 | 200 |    1.870653ms |  120.195.198.50 | GET      "/page/userinfo/henryk"
+[GIN] 2023/01/04 - 17:27:07 | 200 |   57.498887ms |  120.195.198.50 | GET      "/post/"
+[GIN] 2023/01/04 - 17:34:51 | 200 |    15.76582ms |  120.195.198.50 | GET      "/post/"
+dataList: [{{1000 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC {0001-01-01 00:00:00 +0000 UTC false}} 1000 henryk /resource/images/3.jpg   写代码是医生的邀请 https://space.bilibili.com/66628849 https://www.zhihu.com/people/xu-heng-wei-63 https://github.com/user-hw}]
+[GIN] 2023/01/04 - 17:34:56 | 200 |    4.846236ms |  120.195.198.50 | GET      "/page/userinfo/henryk"
+[GIN] 2023/01/04 - 17:34:56 | 200 |    2.207462ms |  120.195.198.50 | GET      "/post/"
+[GIN] 2023/01/04 - 17:36:44 | 200 |    1.667085ms |  120.195.198.50 | GET      "/post/"
+[GIN] 2023/01/04 - 17:40:03 | 200 |    3.510885ms |  120.195.198.50 | GET      "/post/"
+[GIN] 2023/01/04 - 18:52:25 | 404 |       5.056µs | 178.128.162.175 | GET      "/"
+[GIN] 2023/01/04 - 20:43:23 | 404 |       3.885µs |  106.75.186.152 | GET      "/"
+[GIN] 2023/01/04 - 20:43:58 | 404 |    3.778372ms |   106.75.189.40 | GET      "/"
+[GIN] 2023/01/05 - 04:31:15 | 404 |       3.566µs |  222.209.93.136 | GET      "/"
+[mysql] 2023/01/05 09:56:01 packets.go:122: closing bad idle connection: unexpected read from socket
+[mysql] 2023/01/05 09:56:01 packets.go:122: closing bad idle connection: unexpected read from socket
+[mysql] 2023/01/05 09:56:01 connection.go:173: driver: bad connection
+[GIN] 2023/01/05 - 09:56:01 | 200 |   48.952199ms |  120.195.198.50 | GET      "/post/"
+dataList: [{{1000 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC {0001-01-01 00:00:00 +0000 UTC false}} 1000 henryk /resource/images/3.jpg   写代码是医生的邀请 https://space.bilibili.com/66628849 https://www.zhihu.com/people/xu-heng-wei-63 https://github.com/user-hw}]
+[GIN] 2023/01/05 - 09:56:01 | 200 |   55.682767ms |  120.195.198.50 | GET      "/page/userinfo/henryk"
+[GIN] 2023/01/05 - 09:58:05 | 200 |    1.450057ms |  120.195.198.50 | GET      "/post/"
+dataList: [{{1000 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC {0001-01-01 00:00:00 +0000 UTC false}} 1000 henryk /resource/images/3.jpg   写代码是医生的邀请 https://space.bilibili.com/66628849 https://www.zhihu.com/people/xu-heng-wei-63 https://github.com/user-hw}]
+[GIN] 2023/01/05 - 09:58:08 | 200 |    3.053124ms |  120.195.198.50 | GET      "/page/userinfo/henryk"
+[GIN] 2023/01/05 - 09:58:08 | 200 |    1.558255ms |  120.195.198.50 | GET      "/post/"
+[GIN] 2023/01/05 - 09:58:27 | 200 |    1.736258ms |  120.195.198.50 | GET      "/post/"
+dataList: [{{1000 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC {0001-01-01 00:00:00 +0000 UTC false}} 1000 henryk /resource/images/3.jpg   写代码是医生的邀请 https://space.bilibili.com/66628849 https://www.zhihu.com/people/xu-heng-wei-63 https://github.com/user-hw}]
+[GIN] 2023/01/05 - 10:00:11 | 200 |   14.784843ms |  220.196.160.61 | GET      "/page/userinfo/henryk"
+dataList: [{{1000 0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC {0001-01-01 00:00:00 +0000 UTC false}} 1000 henryk /resource/images/3.jpg   写代码是医生的邀请 https://space.bilibili.com/66628849 https://www.zhihu.com/people/xu-heng-wei-63 https://github.com/user-hw}]
+[GIN] 2023/01/05 - 10:00:19 | 200 |     2.65578ms |  120.195.198.50 | GET      "/page/userinfo/henryk"
+[GIN] 2023/01/05 - 10:00:19 | 200 |    4.778414ms |  120.195.198.50 | GET      "/post/"
+signal: terminated

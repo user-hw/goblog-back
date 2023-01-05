@@ -12,3 +12,14 @@ func GetAllPost() []model.BlogPost {
 
 	return dataList
 }
+
+func GetPostByPid() []model.BlogPost {
+	var dataList []model.BlogPost
+
+	// 查询数据库
+	DB.Find(&dataList)
+	// fmt.Printf("dataList: %v\n", dataList)
+
+	return dataList
+
+}

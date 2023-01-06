@@ -13,11 +13,11 @@ func GetAllPost() []model.BlogPost {
 	return dataList
 }
 
-func GetPostByPid() []model.BlogPost {
+func GetPostByPid(pid string) []model.BlogPost {
 	var dataList []model.BlogPost
 
 	// 查询数据库
-	DB.Find(&dataList)
+	DB.Where("pid = ?", pid).First(&dataList)
 	// fmt.Printf("dataList: %v\n", dataList)
 
 	return dataList

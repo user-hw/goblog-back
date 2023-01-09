@@ -21,7 +21,7 @@ func Post(c *gin.Context) {
 		if len(postList[i].Content) > 100 {
 			postList[i].Content = postList[i].Content[0:100] + "..."
 		}
-		fmt.Printf("v: %v\n", postList[i].Content)
+		// fmt.Printf("v: %v\n", postList[i].Content)
 	}
 
 	type Res struct {

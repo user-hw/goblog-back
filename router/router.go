@@ -20,6 +20,8 @@ func Start() {
 
 	r.GET("/post/:pid", controller.PostByPid)
 
+	r.POST("/login/", controller.Login)
+
 	r.GET("/test", func(c *gin.Context) {
 		c.JSON(200, gin.H{
 			"Avatar":   "/resource/images/3.jpg",

@@ -1,3 +1,11 @@
+/*
+ * @Author: HengweiXu 1761173100@qq.com
+ * @Date: 2022-12-21 16:32:01
+ * @LastEditors: HengweiXu 1761173100@qq.com
+ * @LastEditTime: 2023-01-16 16:43:25
+ * @FilePath: /goblog-back/router/router.go
+ * @Description: 路由文件
+ */
 package router
 
 import (
@@ -12,13 +20,25 @@ func Start() {
 
 	r.Use(config.Cors()) //开启中间件 允许使用跨域请求
 
+	/**
+	* @description:
+	* @return {*}
+	 */
 	r.GET("/page/category/", controller.Category)
 
+	/**
+	* @description:根据用户userName获取用户信息
+	* @return {*}
+	 */
 	r.GET("/page/userinfo/:name", controller.PageUserInfo)
 
-	r.GET("/post/", controller.Post)
-
+	/**
+	* @description: 返回文章系列
+	* @return {*}
+	 */
+	r.GET("/post", controller.Post)
 	r.GET("/post/:pid", controller.PostByPid)
+	// r.GET("/post/:start", controller.PostByPid)
 
 	r.POST("/login/", controller.Login)
 

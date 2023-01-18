@@ -2,7 +2,7 @@
  * @Author: HengweiXu 1761173100@qq.com
  * @Date: 2023-01-04 16:35:31
  * @LastEditors: HengweiXu 1761173100@qq.com
- * @LastEditTime: 2023-01-16 16:25:21
+ * @LastEditTime: 2023-01-18 10:55:45
  * @FilePath: /goblog-back/controller/post.go
  * @Description: 获取所有文章列表
  */
@@ -22,10 +22,11 @@ import (
 type PostDetail struct {
 	BlogPost model.BlogPost ` json:"blogPost"`
 	// model.BlogPost
-	Uid      int    ` json:"uid"`
-	UserName string `gorm:"type:varchar(20);not null; default:aaa" json:"userName" binding:"required"`
-	Avatar   string `json:"avatar"`
-	NickName string `gorm:"type:varchar(20);" json:nickName`
+	Uid       int    ` json:"uid"`
+	UserName  string `gorm:"type:varchar(20);not null; default:aaa" json:"userName" binding:"required"`
+	Avatar    string `json:"avatar"`
+	NickName  string `gorm:"type:varchar(20);" json:nickName`
+	PageCount int    `json:pageCount`
 }
 
 func Post(c *gin.Context) {
@@ -71,10 +72,11 @@ func Post(c *gin.Context) {
 			uid := postList[i].Uid
 			userInfo := dao.GetUserInfoByUid(uid)
 			post := PostDetail{
-				BlogPost: postList[i],
-				Uid:      userInfo[0].Uid,
-				UserName: userInfo[0].UserName,
-				NickName: userInfo[0].NickName,
+				BlogPost:  postList[i],
+				Uid:       userInfo[0].Uid,
+				UserName:  userInfo[0].UserName,
+				NickName:  userInfo[0].NickName,
+				PageCount: len(postList),
 			}
 			postAll = append(postAll, post)
 

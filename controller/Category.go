@@ -2,7 +2,7 @@ package controller
 
 import (
 	"goblog-end/dao"
-	"goblog-end/model"
+	"goblog-end/model/DBmodel"
 
 	"github.com/gin-gonic/gin"
 )

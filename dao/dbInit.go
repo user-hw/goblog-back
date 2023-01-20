@@ -9,7 +9,8 @@
 package dao
 
 import (
-	"goblog-end/model"
+	// "goblog-end/model"
+	"goblog-end/model/DBmodel"
 
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"

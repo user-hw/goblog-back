@@ -1,8 +1,16 @@
 /*
  * @Author: HengweiXu 1761173100@qq.com
+ * @Date: 2023-01-16 14:56:03
+ * @LastEditors: HengweiXu 1761173100@qq.com
+ * @LastEditTime: 2023-01-20 12:59:21
+ * @FilePath: /web/goblog-back/controller/postAll.go
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
+/*
+ * @Author: HengweiXu 1761173100@qq.com
  * @Date: 2023-01-04 16:35:31
  * @LastEditors: HengweiXu 1761173100@qq.com
- * @LastEditTime: 2023-01-18 10:55:45
+ * @LastEditTime: 2023-01-20 12:24:18
  * @FilePath: /goblog-back/controller/post.go
  * @Description: 获取所有文章列表
  */
@@ -13,27 +21,16 @@ import (
 
 	"fmt"
 	"goblog-end/dao"
-	"goblog-end/model"
+	mymodel "goblog-end/model"
+	"goblog-end/model/DBmodel"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
 )
 
-type PostDetail struct {
-	BlogPost model.BlogPost ` json:"blogPost"`
-	// model.BlogPost
-	Uid       int    ` json:"uid"`
-	UserName  string `gorm:"type:varchar(20);not null; default:aaa" json:"userName" binding:"required"`
-	Avatar    string `json:"avatar"`
-	NickName  string `gorm:"type:varchar(20);" json:nickName`
-	PageCount int    `json:pageCount`
-}
-
 func Post(c *gin.Context) {
 	// 获取路径参数
-	// name := c.Param("name")
 	pageNum, _ := strconv.Atoi(c.Query("pageNum"))
-
 	postNum, _ := strconv.Atoi(c.Query("postNum"))
 	// fmt.Printf("id: %v\n", id)
 
@@ -55,7 +52,7 @@ func Post(c *gin.Context) {
 			"data": gin.H{},
 		})
 	} else {
-		postAll := []PostDetail{}
+		postAll := []mymodel.PostDetail{}
 		len_postList := len(postList)
 		startNum := (pageNum - 1) * postNum
 		endNum := 0
@@ -71,7 +68,7 @@ func Post(c *gin.Context) {
 		for i := startNum; i < endNum; i++ {
 			uid := postList[i].Uid
 			userInfo := dao.GetUserInfoByUid(uid)
-			post := PostDetail{
+			post := mymodel.PostDetail{
 				BlogPost:  postList[i],
 				Uid:       userInfo[0].Uid,
 				UserName:  userInfo[0].UserName,

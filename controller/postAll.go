@@ -1,16 +1,8 @@
 /*
  * @Author: HengweiXu 1761173100@qq.com
- * @Date: 2023-01-16 14:56:03
- * @LastEditors: HengweiXu 1761173100@qq.com
- * @LastEditTime: 2023-01-20 12:59:21
- * @FilePath: /web/goblog-back/controller/postAll.go
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
- */
-/*
- * @Author: HengweiXu 1761173100@qq.com
  * @Date: 2023-01-04 16:35:31
  * @LastEditors: HengweiXu 1761173100@qq.com
- * @LastEditTime: 2023-01-20 12:24:18
+ * @LastEditTime: 2023-01-20 20:27:09
  * @FilePath: /goblog-back/controller/post.go
  * @Description: 获取所有文章列表
  */
@@ -32,12 +24,19 @@ func Post(c *gin.Context) {
 	// 获取路径参数
 	pageNum, _ := strconv.Atoi(c.Query("pageNum"))
 	postNum, _ := strconv.Atoi(c.Query("postNum"))
+	uid, _ := strconv.Atoi(c.Query("uid"))
 	// fmt.Printf("id: %v\n", id)
 
 	var postList []model.BlogPost
 
+	fmt.Printf("uid: %v\n", uid)
+
 	//查询数据库
-	postList = dao.GetAllPost()
+	if uid != 0 {
+		postList = dao.GetPostByUid(uid)
+	} else {
+		postList = dao.GetAllPost()
+	}
 	for i := 0; i < len(postList); i++ {
 		if len(postList[i].Content) > 100 {
 			postList[i].Content = postList[i].Content[0:100] + "..."

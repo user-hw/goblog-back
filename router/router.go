@@ -2,7 +2,7 @@
  * @Author: HengweiXu 1761173100@qq.com
  * @Date: 2022-12-21 16:32:01
  * @LastEditors: HengweiXu 1761173100@qq.com
- * @LastEditTime: 2023-01-20 12:21:29
+ * @LastEditTime: 2023-01-20 20:24:50
  * @FilePath: /goblog-back/router/router.go
  * @Description: 路由文件
  */
@@ -38,8 +38,7 @@ func Start() {
 	 */
 	r.GET("/post", controller.Post)
 	r.GET("/post/:pid", controller.PostByPid)
-	r.GET("/post/uid", controller.PostByUid)
-	// r.GET("/post/:start", controller.PostByPid)
+	// r.GET("/post/uid", controller.PostByUid)
 
 	r.POST("/login/", controller.Login)
 

@@ -2,7 +2,7 @@
  * @Author: HengweiXu 1761173100@qq.com
  * @Date: 2023-01-04 16:35:31
  * @LastEditors: HengweiXu 1761173100@qq.com
- * @LastEditTime: 2023-01-20 20:27:09
+ * @LastEditTime: 2023-01-21 22:19:43
  * @FilePath: /goblog-back/controller/post.go
  * @Description: 获取所有文章列表
  */
@@ -72,7 +72,7 @@ func Post(c *gin.Context) {
 				Uid:       userInfo[0].Uid,
 				UserName:  userInfo[0].UserName,
 				NickName:  userInfo[0].NickName,
-				PageCount: len(postList),
+				PageCount: (len(postList)-1)/postNum + 1,
 			}
 			postAll = append(postAll, post)
 

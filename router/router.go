@@ -2,7 +2,7 @@
  * @Author: HengweiXu 1761173100@qq.com
  * @Date: 2022-12-21 16:32:01
  * @LastEditors: HengweiXu 1761173100@qq.com
- * @LastEditTime: 2023-01-31 15:58:36
+ * @LastEditTime: 2023-01-31 21:59:36
  * @FilePath: /goblog-back/router/router.go
  * @Description: 路由文件
  */
@@ -43,6 +43,9 @@ func Start() {
 	r.POST("/login/", controller.Login)
 
 	r.POST("/writing", controller.Writing)
+
+	r.POST("/api/upload/img", controller.Upload)
+	r.GET("/api/qiniu", controller.QiniuToken)
 
 	r.GET("/test", func(c *gin.Context) {
 		c.JSON(200, gin.H{

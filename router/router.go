@@ -2,7 +2,7 @@
  * @Author: HengweiXu 1761173100@qq.com
  * @Date: 2022-12-21 16:32:01
  * @LastEditors: HengweiXu 1761173100@qq.com
- * @LastEditTime: 2023-01-31 21:59:36
+ * @LastEditTime: 2023-01-31 23:31:31
  * @FilePath: /goblog-back/router/router.go
  * @Description: 路由文件
  */
@@ -38,6 +38,7 @@ func Start() {
 	 */
 	r.GET("/post", controller.Post)
 	r.GET("/post/:pid", controller.PostByPid)
+	r.GET("/post/id", controller.PostByPid)
 	// r.GET("/post/uid", controller.PostByUid)
 
 	r.POST("/login/", controller.Login)
@@ -58,7 +59,6 @@ func Start() {
 			"code":     200,
 			// "Categorys": [1,2],
 		})
-
 	})
 
 	port := "8082"

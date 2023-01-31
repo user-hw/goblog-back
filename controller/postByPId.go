@@ -2,7 +2,7 @@
  * @Author: HengweiXu 1761173100@qq.com
  * @Date: 2023-01-04 16:35:31
  * @LastEditors: HengweiXu 1761173100@qq.com
- * @LastEditTime: 2023-01-16 15:19:49
+ * @LastEditTime: 2023-01-31 23:28:34
  * @FilePath: /goblog-back/controller/post.go
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -13,18 +13,21 @@ import (
 	"goblog-end/dao"
 	"goblog-end/model/DBmodel"
 	"reflect"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 )
 
 func PostByPid(c *gin.Context) {
 	// 获取路径参数
-	pid := c.Param("pid")
+
+	id, _ := strconv.Atoi(c.Query("id"))
+	fmt.Printf("id: %v\n", id)
 
 	var post []model.BlogPost
 
 	//查询数据库
-	post = dao.GetPostByPid(pid)
+	post = dao.GetPostById(id)
 
 	uid := post[0].Uid
 	fmt.Printf("uid: %v\n", reflect.TypeOf(uid))

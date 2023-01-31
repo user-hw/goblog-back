@@ -2,8 +2,8 @@
  * @Author: HengweiXu 1761173100@qq.com
  * @Date: 2023-01-09 22:52:40
  * @LastEditors: HengweiXu 1761173100@qq.com
- * @LastEditTime: 2023-01-20 12:32:26
- * @FilePath: /web/goblog-back/controller/login.go
+ * @LastEditTime: 2023-01-31 15:59:01
+ * @FilePath: /goblog-back/controller/login.go
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 package controller
@@ -11,6 +11,7 @@ package controller
 import (
 	"errors"
 	"fmt"
+
 	"goblog-end/dao"
 	"goblog-end/utils"
 
@@ -22,11 +23,7 @@ func Login(c *gin.Context) {
 		UserName  string `json:userName`
 		MD5Passwd string
 	}
-	type UserInfo struct {
-		Uid      int    `json:"uid"`
-		UserName string `json:"userName"`
-		Avatar   string `json:"avatar"`
-	}
+
 	userLogin := UserLogin{}
 	c.BindJSON(&userLogin)
 
@@ -41,10 +38,8 @@ func Login(c *gin.Context) {
 			fmt.Printf("token: %v\n", token)
 		}
 
-		var userInfo UserInfo
-		userInfo.Uid = res[0].Uid
-		userInfo.UserName = res[0].UserName
-		userInfo.Avatar = res[0].Avatar
+		userInfo := dao.GetUserInfoByUid(uid)
+		// fmt.Printf("userInfo: %v\n", userInfo)
 
 		c.JSON(200, gin.H{
 			"meg":      "登录成功",

@@ -2,7 +2,7 @@
  * @Author: HengweiXu 1761173100@qq.com
  * @Date: 2023-01-04 16:35:31
  * @LastEditors: HengweiXu 1761173100@qq.com
- * @LastEditTime: 2023-02-03 17:55:47
+ * @LastEditTime: 2023-02-03 18:01:24
  * @FilePath: /goblog-back/controller/post.go
  * @Description: 获取所有文章列表
  */
@@ -14,7 +14,7 @@ import (
 	"fmt"
 	"goblog-end/dao"
 	mymodel "goblog-end/model"
-	"goblog-end/model/DBmodel"
+	model "goblog-end/model/DBmodel"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
@@ -39,11 +39,8 @@ func Post(c *gin.Context) {
 	}
 	for i := 0; i < len(postList); i++ {
 		text := postList[i].Text
+		// go输入中文是3个字节为一个单位，截取的时候要使用3的倍数或者采用下面的方法转化
 		// nameRune := []rune(text)
-		// //打印转换后的长度
-		// fmt.Println(len(nameRune))
-		// //打印截取后的字符串前10个字符
-		// fmt.Println("string = ", string(nameRune[0:9]))
 
 		if len(text) > 99 {
 			fmt.Printf("postList[i].Text: %v\n", text[0:99])

@@ -2,7 +2,7 @@
  * @Author: HengweiXu 1761173100@qq.com
  * @Date: 2023-01-04 16:35:31
  * @LastEditors: HengweiXu 1761173100@qq.com
- * @LastEditTime: 2023-01-21 22:19:43
+ * @LastEditTime: 2023-02-03 17:55:47
  * @FilePath: /goblog-back/controller/post.go
  * @Description: 获取所有文章列表
  */
@@ -38,8 +38,16 @@ func Post(c *gin.Context) {
 		postList = dao.GetAllPost()
 	}
 	for i := 0; i < len(postList); i++ {
-		if len(postList[i].Content) > 100 {
-			postList[i].Content = postList[i].Content[0:100] + "..."
+		text := postList[i].Text
+		// nameRune := []rune(text)
+		// //打印转换后的长度
+		// fmt.Println(len(nameRune))
+		// //打印截取后的字符串前10个字符
+		// fmt.Println("string = ", string(nameRune[0:9]))
+
+		if len(text) > 99 {
+			fmt.Printf("postList[i].Text: %v\n", text[0:99])
+			postList[i].Text = text[0:99] + "..."
 		}
 	}
 

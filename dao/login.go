@@ -9,7 +9,9 @@
 package dao
 
 import (
-	"goblog-end/model/DBmodel"
+	"fmt"
+	model "goblog-end/model/DBmodel"
+	_ "time"
 )
 
 func GetLogin(username string, passwd string) []model.BlogUser {
@@ -21,4 +23,19 @@ func GetLogin(username string, passwd string) []model.BlogUser {
 	// fmt.Printf("dataList: %v\n", dataList)
 
 	return dataList
+}
+
+func TokenToRedis(userName string, token string) {
+	// 将 JWT 存入 Redis 缓存
+	redisClient := Pool.Get()
+	// fmt.Printf("redisClient: %v\n", redisClient)
+	defer redisClient.Close()
+	redisClient.Do("SET", userName, token)
+	_, err := redisClient.Do("EXPIRE", userName, 10*1000*60*60)
+	if err != nil {
+		// c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to store token"})
+		// return
+		fmt.Printf("err: %v\n", err)
+	}
+
 }

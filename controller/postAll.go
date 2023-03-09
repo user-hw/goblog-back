@@ -43,7 +43,7 @@ func Post(c *gin.Context) {
 		// nameRune := []rune(text)
 
 		if len(text) > 99 {
-			fmt.Printf("postList[i].Text: %v\n", text[0:99])
+			// fmt.Printf("postList[i].Text: %v\n", text[0:99])
 			postList[i].Text = text[0:99] + "..."
 		}
 	}

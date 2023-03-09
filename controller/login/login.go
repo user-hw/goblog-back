@@ -9,16 +9,33 @@
 package controller
 
 import (
+	// "context"
 	"errors"
 	"fmt"
+
+	// "net/http"
 
 	"goblog-end/dao"
 	"goblog-end/utils"
 
 	"github.com/gin-gonic/gin"
+	// "github.com/go-redis/redis"
+	// "github.com/go-redis/redis/v8"
+	// "github.com/gomodule/redigo/redis"
 )
 
+// PingExample godoc
+// @Summary 账号密码登录
+// @Schemes
+// @Description 登录
+// @Param UserName MD5Passwd
+// @Tags example
+// @Accept json
+// @Produce json
+// @Success 200 {string} Helloworld
+// @Router /login [get]
 func Login(c *gin.Context) {
+
 	type UserLogin struct {
 		UserName  string `json:userName`
 		MD5Passwd string
@@ -38,6 +55,17 @@ func Login(c *gin.Context) {
 			fmt.Printf("token: %v\n", token)
 		}
 
+		// // 将 JWT 存入 Redis 缓存
+		dao.TokenToRedis(userLogin.UserName, token)
+		// redisClient := Pool.Get()
+		// defer redisClient.Close()
+		// _, err = redisClient.Do("SET", userLogin.UserName, token, time.Hour*120)
+		// if err != nil {
+		// 	// c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to store token"})
+		// 	// return
+		// 	fmt.Printf("err: %v\n", err)
+		// }
+
 		userInfo := dao.GetUserInfoByUid(uid)
 		// fmt.Printf("userInfo: %v\n", userInfo)
 
@@ -53,5 +81,4 @@ func Login(c *gin.Context) {
 			"code": 403,
 		})
 	}
-
 }
